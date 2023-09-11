@@ -14,74 +14,103 @@
 
 <title>Tutorial</title>
 
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -90,13 +119,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -104,6 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -303,28 +340,51 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<p>To use <code>waspr</code> the user first needs to load the package as follows:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(waspr)</span></code></pre></div>
-<p>The user must provide a 3-dimensional array with posterior samples for all parameters for each subset posterior (rows = subset posteriors, columns = parameters, slices = samples). The amount of parameters and samples must be equal for each subset posterior, these posterior samples may be obtained from any type of MCMC algorithm. <code>waspr</code> provides an example array with posterior samples for 8 parameters for 8 subset posteriors, <code>pois_logistic</code>, that will be used to illustrate the functionality of the package.</p>
-<p>The main function <code>wasp()</code> runs the swapping algorithm, combines its output and computes the Wasserstein barycenter. It has four arguments, <code>mcmc</code>, that specifies the 3-dimensional array with samples for each subset posterior, and optional arguments <code>par.names</code>, that can be used to specify parameter names, <code>iter</code> to specify the maximum number of iterations of the swapping algorithm, <code>acc</code> to specify the accuracy of the swapping algorithm and <code>out</code> to indicate whether the results per iteration of the swap algorithm should be printed.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2"></a>out &lt;-<span class="st"> </span><span class="kw">wasp</span>(pois_logistic,</span>
-<span id="cb2-3"><a href="#cb2-3"></a>            <span class="dt">iter =</span> <span class="dv">10</span>,</span>
-<span id="cb2-4"><a href="#cb2-4"></a>            <span class="dt">acc =</span> <span class="fl">0.001</span>,</span>
-<span id="cb2-5"><a href="#cb2-5"></a>            <span class="dt">par.names =</span> <span class="kw">c</span>(<span class="st">&quot;beta_s&quot;</span>, <span class="st">&quot;alpha_l&quot;</span>, <span class="st">&quot;beta_l&quot;</span>,</span>
-<span id="cb2-6"><a href="#cb2-6"></a>                         <span class="st">&quot;baseline_sigma&quot;</span>, <span class="st">&quot;baseline_mu&quot;</span>,</span>
-<span id="cb2-7"><a href="#cb2-7"></a>                         <span class="st">&quot;correlation&quot;</span>, <span class="st">&quot;sigma_s&quot;</span>, <span class="st">&quot;sigma_l&quot;</span>))</span></code></pre></div>
-<p><code>wasp()</code> prints the iteration number and cost function value of the swapping algorithm. The <code>out</code> object is of class <code>wasp</code> and contains several elements. To obtain the Wasserstein barycenter of the subset posteriors a user can specify <code>out$barycenter</code>. This returns a matrix of posterior samples (rows) for all parameters (columns) of the full data posterior. A summary of the approximation of the full data posterior is available through <code>summary(out)</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">summary</span>(out)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;                      mean       mode         sd      LB HPD     UB HPD</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; beta_s          0.5527601  0.5518034 0.10988949  0.36598187  0.7896041</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; alpha_l         2.6811079  2.6959176 0.19199304  2.30380675  3.0295802</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; beta_l          0.7508520  0.7339988 0.21631011  0.37281283  1.1740767</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; baseline_sigma  0.3563222  0.3811609 0.06859910  0.21910807  0.4870079</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; baseline_mu    -0.8008872 -0.7516167 0.10867533 -1.01168299 -0.5944583</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt; correlation     0.1732170  0.1392670 0.07437737  0.02824474  0.3059979</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; sigma_s         1.7225455  1.7535499 0.17920847  1.40126462  2.0610585</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt; sigma_l         1.2190297  1.2612822 0.07558163  1.06768047  1.3569757</span></span></code></pre></div>
+<p>To use <code>waspr</code> the user first needs to load the package as
+follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(waspr)</span></code></pre></div>
+<p>The user must provide a 3-dimensional array with posterior samples
+for all parameters for each subset posterior (rows = subset posteriors,
+columns = parameters, slices = samples). The amount of parameters and
+samples must be equal for each subset posterior, these posterior samples
+may be obtained from any type of MCMC algorithm. <code>waspr</code>
+provides an example array with posterior samples for 8 parameters for 8
+subset posteriors, <code>pois_logistic</code>, that will be used to
+illustrate the functionality of the package.</p>
+<p>The main function <code>wasp()</code> runs the swapping algorithm,
+combines its output and computes the Wasserstein barycenter. It has four
+arguments, <code>mcmc</code>, that specifies the 3-dimensional array
+with samples for each subset posterior, and optional arguments
+<code>par.names</code>, that can be used to specify parameter names,
+<code>iter</code> to specify the maximum number of iterations of the
+swapping algorithm, <code>acc</code> to specify the accuracy of the
+swapping algorithm and <code>out</code> to indicate whether the results
+per iteration of the swap algorithm should be printed.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">wasp</span>(pois_logistic,</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>            <span class="at">iter =</span> <span class="dv">10</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>            <span class="at">acc =</span> <span class="fl">0.001</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>            <span class="at">par.names =</span> <span class="fu">c</span>(<span class="st">&quot;beta_s&quot;</span>, <span class="st">&quot;alpha_l&quot;</span>, <span class="st">&quot;beta_l&quot;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>                         <span class="st">&quot;baseline_sigma&quot;</span>, <span class="st">&quot;baseline_mu&quot;</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>                         <span class="st">&quot;correlation&quot;</span>, <span class="st">&quot;sigma_s&quot;</span>, <span class="st">&quot;sigma_l&quot;</span>))</span></code></pre></div>
+<p><code>wasp()</code> prints the iteration number and cost function
+value of the swapping algorithm. The <code>out</code> object is of class
+<code>wasp</code> and contains several elements. To obtain the
+Wasserstein barycenter of the subset posteriors a user can specify
+<code>out$barycenter</code>. This returns a matrix of posterior samples
+(rows) for all parameters (columns) of the full data posterior. A
+summary of the approximation of the full data posterior is available
+through <code>summary(out)</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">summary</span>(out)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt;                      mean       mode         sd      LB HPD     UB HPD</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#&gt; beta_s          0.5527601  0.5518034 0.10988949  0.36598187  0.7896041</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; alpha_l         2.6811079  2.6959176 0.19199304  2.30380675  3.0295802</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; beta_l          0.7508520  0.7339988 0.21631011  0.37281283  1.1740767</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; baseline_sigma  0.3563222  0.3811609 0.06859910  0.21910807  0.4870079</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; baseline_mu    -0.8008872 -0.7516167 0.10867533 -1.01168299 -0.5944583</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; correlation     0.1732170  0.1392670 0.07437737  0.02824474  0.3059979</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; sigma_s         1.7225455  1.7535499 0.17920847  1.40126462  2.0610585</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; sigma_l         1.2190297  1.2612822 0.07558163  1.06768047  1.3569757</span></span></code></pre></div>
 
 
 

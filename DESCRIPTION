@@ -1,7 +1,7 @@
 Package: waspr
 Type: Package
 Title: Wasserstein Barycenters of Subset Posteriors
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: person("Jolien", "Cremers", email = "joliencremers@gmail.com",
                   role = c("aut", "cre"))
 Description: Functions to compute Wasserstein barycenters
@@ -12,19 +12,21 @@ Description: Functions to compute Wasserstein barycenters
     posterior in case of complex models and/or big datasets, thereby increasing
     computational speed tremendously.
 License: GPL-3
+URL: https://github.com/joliencremers/waspr
+BugReports: https://github.com/joliencremers/waspr/issues
 Encoding: UTF-8
 LazyData: true
-Imports: Rcpp (>= 1.0.4.6), methods
+Imports: Rcpp (>= 1.0.4.6)
 LinkingTo: BH, Rcpp, RcppArmadillo,
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.3
 Suggests: knitr, rmarkdown, testthat, spelling
 VignetteBuilder: knitr
 Language: en-US
 Biarch: true
 Depends: R (>= 3.5.0)
 NeedsCompilation: yes
-Packaged: 2020-07-20 10:51:59 UTC; bsj777
+Packaged: 2023-09-11 13:09:38 UTC; Jolien
 Author: Jolien Cremers [aut, cre]
 Maintainer: Jolien Cremers <joliencremers@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-07-24 17:30:02 UTC
+Date/Publication: 2023-09-11 14:00:03 UTC
